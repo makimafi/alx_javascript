@@ -1,6 +1,14 @@
-const Rectangle = require('./2-rectangle');
+class Rectangle {
+    constructor(w, h) {
+        if (w > 0 && h > 0) {
+            this.width = w;
+            this.height = h;
+        } else {
+            // Set width and height to undefined
+            this.width = undefined;
+            this.height = undefined;
+        }
+    }
+}
 
-const r4 = new Rectangle(2, 0);
-console.log(r4);
-console.log(r4.width);
-console.log(r4.height);
+module.exports = Rectangle;
