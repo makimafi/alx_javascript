@@ -1,21 +1,10 @@
-// 4-rectangle.js
-class Rectangle {
-    constructor(w, h) {
-      this.width = w;
-      this.height = h;
-    }
-    
-    print() {
-      for (let i = 0; i < this.height; i++) {
-        console.log('X'.repeat(this.width));
-      }
-    }
-    
-    double() {
-      this.width *= 2;
-      this.height *= 2;
-    }
+// 5-square.js
+const Rectangle = require('./4-rectangle');
+
+class Square extends Rectangle {
+  constructor(size) {
+    super(size, size);
   }
-  
-  module.exports = Rectangle;
-  
+}
+
+module.exports = Square;
