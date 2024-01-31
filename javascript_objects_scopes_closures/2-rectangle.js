@@ -1,12 +1,14 @@
+#!/usr/bin/node
+
 class Rectangle {
     constructor(w, h) {
-        if (w > 0 && h > 0) {
-            this.width = w;
-            this.height = h;
-        } else {
-            Object.create(null);
-        }
+      if (w <= 0 || h <= 0 || isNaN(w) || isNaN(h)) {
+        return {};
+      }
+      this.width = w;
+      this.height = h;
     }
-}
-
-module.exports = Rectangle;
+  }
+  
+  module.exports = Rectangle;
+  
