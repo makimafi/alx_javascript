@@ -1,34 +1,50 @@
-class Rectangle:
-    def __init__(self, w, h):
-        if w <= 0 or h <= 0:
-            pass
-        else:
-            self.width = w
-            self.height = h
+class Rectangle {
+    constructor(w, h) {
+        if (w <= 0 || h <= 0) {
+            // If width or height is not positive, create an empty object
+            return;
+        }
+        this.width = w;
+        this.height = h;
+    }
 
-    def print(self):
-        if hasattr(self, 'width') and hasattr(self, 'height'):
-            for _ in range(self.height):
-                print('X' * self.width)
+    print() {
+        if (!this.width || !this.height) {
+            return;
+        }
+        for (let i = 0; i < this.height; i++) {
+            console.log('X'.repeat(this.width));
+        }
+    }
 
-    def rotate(self):
-        if hasattr(self, 'width') and hasattr(self, 'height'):
-            self.width, self.height = self.height, self.width
+    rotate() {
+        if (!this.width || !this.height) {
+            return;
+        }
+        [this.width, this.height] = [this.height, this.width];
+    }
 
-    def double(self):
-        if hasattr(self, 'width') and hasattr(self, 'height'):
-            self.width *= 2
-            self.height *= 2
+    double() {
+        if (!this.width || !this.height) {
+            return;
+        }
+        this.width *= 2;
+        this.height *= 2;
+    }
+}
 
-if __name__ == "__main__":
-    r1 = Rectangle(2, 3)
-    print('Normal:')
-    r1.print()
+module.exports = Rectangle;
 
-    print('Double:')
-    r1.double()
-    r1.print()
+if (require.main === module) {
+    const r1 = new Rectangle(2, 3);
+    console.log('Normal:');
+    r1.print();
 
-    print('Rotate:')
-    r1.rotate()
-    r1.print()
+    console.log('Double:');
+    r1.double();
+    r1.print();
+
+    console.log('Rotate:');
+    r1.rotate();
+    r1.print();
+}
