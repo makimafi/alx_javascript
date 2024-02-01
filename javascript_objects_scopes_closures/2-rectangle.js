@@ -1,5 +1,7 @@
 #!/usr/bin/node// File: 2-rectangle.js
 
+// File: 2-rectangle.js
+
 class Rectangle {
     constructor(w, h) {
         if (w <= 0 || h <= 0 || isNaN(w) || isNaN(h)) {
@@ -10,6 +12,7 @@ class Rectangle {
             this.width = w;
             // Initialize the instance attribute height with the value of h
             this.height = h;
+            return this; // Return the created object
         }
     }
 }
