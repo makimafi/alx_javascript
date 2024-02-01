@@ -1,21 +1,22 @@
-class Rectangle:
-    def __init__(self, w, h):
-        if w <= 0 or h <= 0:
-            pass  # Creating an empty object
-        else:
-            self.width = w
-            self.height = h
+// 3-rectangle.js
+class Rectangle {
+    constructor(w, h) {
+        if (w <= 0 || h <= 0) {
+            return {}; // Returning an empty object
+        }
+        this.width = w;
+        this.height = h;
+    }
 
-    def print(self):
-        if hasattr(self, 'width') and hasattr(self, 'height'):
-            for _ in range(self.height):
-                print("X" * self.width)
+    print() {
+        for (let i = 0; i < this.height; i++) {
+            let row = '';
+            for (let j = 0; j < this.width; j++) {
+                row += 'X';
+            }
+            console.log(row);
+        }
+    }
+}
 
-
-# Test cases
-if __name__ == "__main__":
-    r1 = Rectangle(2, 3)
-    r1.print()
-
-    r2 = Rectangle(10, 5)
-    r2.print()
+module.exports = Rectangle;
