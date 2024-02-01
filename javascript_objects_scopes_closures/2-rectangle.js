@@ -4,7 +4,10 @@
 
 class Rectangle {
     constructor(w, h) {
-        if (w <= 0 || h <= 0 || isNaN(w) || isNaN(h)) {
+        if (w === undefined || h === undefined) {
+            // If no arguments are provided, create an empty object
+            return {};
+        } else if (w <= 0 || h <= 0 || isNaN(w) || isNaN(h)) {
             // If w or h is equal to 0 or not a positive integer, create an empty object
             return {};
         } else {
@@ -12,7 +15,6 @@ class Rectangle {
             this.width = w;
             // Initialize the instance attribute height with the value of h
             this.height = h;
-            return this; // Return the created object
         }
     }
 }
