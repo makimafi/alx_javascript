@@ -4,10 +4,12 @@
 class Rectangle {
     constructor(w, h) {
       if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
-        return {}; // returning an empty object if w or h are not positive integers
+        this.width = undefined;
+        this.height = undefined;
+      } else {
+        this.width = w;
+        this.height = h;
       }
-      this.width = w;
-      this.height = h;
     }
   }
   
