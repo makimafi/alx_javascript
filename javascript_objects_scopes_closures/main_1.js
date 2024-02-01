@@ -2,13 +2,10 @@
 
 class Rectangle {
     constructor(w, h) {
-      if (w <= 0 || h <= 0 || isNaN(w) || isNaN(h)) {
-        // Create an empty object only if both w and h are not positive integers or are 0
-        if (w === undefined || h === undefined) {
-          return {};
-        }
+      if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
+        this.width = undefined;
+        this.height = undefined;
       } else {
-        // Initialize instance attributes width and height
         this.width = w;
         this.height = h;
       }
