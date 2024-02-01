@@ -1,3 +1,4 @@
+#!/usr/bin/node
 // File: 2-rectangle.js
 
 class Rectangle {
