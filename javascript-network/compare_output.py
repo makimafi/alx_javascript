@@ -1,0 +1,57 @@
+import requests
+import sys
+
+def fetch_and_store(url, file_path):
+    try:
+        # Fetch data from the URL
+        response = requests.get(url)
+        response.raise_for_status()  # Raise an exception for bad status codes
+
+        # Write the response content to the file
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(response.text)
+
+        # Print success message
+        print(f"Contents of {url} saved to {file_path} successfully.")
+
+    except requests.RequestException as e:
+        print(f"Error fetching {url}: {e}")
+
+def compare_output(file_path, expected_output, expected_stderr):
+    try:
+        # Read the contents of the file
+        with open(file_path, 'r', encoding='utf-8') as file:
+            file_content = file.read()
+
+        # Compare the file content with the expected output
+        if file_content.strip() == expected_output.strip():
+            print(f"[Got]\n{file_content}\n({len(file_content)} chars long)")
+        else:
+            print(f"[Got]\n{file_content}\n({len(file_content)} chars long)")
+
+        # Compare the stderr with the expected stderr
+        if expected_stderr == "[Anything]":
+            print("[stderr]:")
+        else:
+            print(f"[stderr]: {expected_stderr}")
+    except Exception as e:
+        print(f"Error comparing output: {e}")
+
+def main():
+    # Check if correct number of arguments are provided
+    if len(sys.argv) != 4:
+        print("Usage: python script.py <URL> <file_path> <expected_output>")
+        sys.exit(1)
+
+    url = sys.argv[1]
+    file_path = sys.argv[2]
+    expected_output = sys.argv[3]
+
+    # Fetch data from the URL and store it in the file
+    fetch_and_store(url, file_path)
+
+    # Compare the output with the expected output
+    compare_output(file_path, expected_output, "[Anything]")
+
+if __name__ == "__main__":
+    main()
