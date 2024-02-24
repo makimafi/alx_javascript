@@ -1,0 +1,41 @@
+// 2-dynamic-form.js
+
+// Function to generate input fields dynamically
+function generateInputFields(numFields) {
+  const inputContainer = document.getElementById('inputContainer');
+  inputContainer.innerHTML = ''; // Clear previous content
+  
+  for (let i = 1; i <= numFields; i++) {
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.name = 'field' + i;
+    inputField.placeholder = 'Field ' + i;
+    inputContainer.appendChild(inputField);
+  }
+}
+
+// Function to validate form submission
+function validateForm(event) {
+  event.preventDefault(); // Prevent form submission
+  const inputs = document.querySelectorAll('#inputContainer input');
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value.trim() === '') {
+      alert('Please fill in all fields');
+      return; // Exit the function early if any field is empty
+    }
+  }
+
+  // If all fields are filled, submit the form
+  alert('Form submitted successfully');
+  // You can add code to submit the form to a server here
+}
+
+// Event listener to handle changes in the dropdown menu
+document.getElementById('numFields').addEventListener('change', function() {
+  const numFields = parseInt(this.value);
+  generateInputFields(numFields);
+});
+
+// Event listener to handle form submission
+document.getElementById('dynamicForm').addEventListener('submit', validateForm);
